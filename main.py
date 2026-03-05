@@ -1,5 +1,14 @@
 import os
 
+CATEGORIAS = { #cria dicionários conectando nossas categorias com as extensões
+    "Imagens": [".jpg", ".jpeg", ".png", ".gif"],
+    "Documentos": [".pdf", ".doc", ".docx", ".txt"],
+    "Planilhas": [".xls", ".xlsx", ".csv"],
+    "Videos": [".mp4", ".mkv", ".avi"],
+    "Musicas": [".mp3", ".wav"],
+    "Compactados": [".zip", ".rar"]
+}
+
 def listar_arquivos(pasta):
     try:
         arquivos = os.listdir(pasta) #acessa a pasta e pega seus arquivos
