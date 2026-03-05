@@ -9,6 +9,16 @@ CATEGORIAS = { #cria dicionários conectando nossas categorias com as extensões
     "Compactados": [".zip", ".rar"]
 }
 
+def descobrir_categoria(arquivo):
+    extensao =  os.path.splitext(arquivo)[1].lower() #separa nome e extensão
+
+    for categoria, extensoes in CATEGORIAS.items(): #percorre CATEGORIAS e verifica se o meu arquivo tem uma delas
+        if extensao in extensoes:
+            return categoria
+
+    return "Outros" #se não encontrou, retorne outros   
+
+
 def listar_arquivos(pasta):
     try:
         arquivos = os.listdir(pasta) #acessa a pasta e pega seus arquivos
