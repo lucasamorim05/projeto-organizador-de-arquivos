@@ -28,7 +28,9 @@ def listar_arquivos(pasta):
             caminho_completo = os.path.join(pasta, arquivo) #junta pasta e arquivo e cria o caminho completo
 
             if os.path.isfile(caminho_completo):
-                print(arquivo) #testa o caminho, e se funcionar, ele imprime
+                categoria = descobrir_categoria(arquivo) 
+                print(f"{arquivo} → {categoria}") #se existir, descobre sua categoria e exibe ela
+
     
     except FileNotFoundError: #se a pasta não foi encontrada
         print("A pasta não foi encontrada.")
