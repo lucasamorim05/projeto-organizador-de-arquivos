@@ -43,7 +43,17 @@ def analisar_arquivos(pasta):
 
     return acoes
 
-def rganizar_arquivos(pasta,acoes):
+def organizar_arquivos(pasta,acoes):
+    for arquivo, categoria in acoes:
+        criar_pasta_categoria(pasta,categoria)
+        origem = os.path.join(pasta,arquivo) #caminho antes de mover
+        destino = os.path.join(pasta,categoria,arquivo) #caminho incluindo a nova pasta
+
+        shutil.move(origem,destino)
+        print(f"{arquivo} movido para {categoria}")
+
+
+
 
 def main():
     print("== Organizador de arquivos v0.4 ==")
@@ -55,7 +65,9 @@ def main():
 
         if confirma == "s":
             organizar_arquivos(pasta,acoes)
-
+            print("\nOrganização concluída!")
+        else:
+            print("\nOperação cancelada.")
 
 if __name__ == "__main__":
     main()
