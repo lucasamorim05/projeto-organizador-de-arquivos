@@ -18,6 +18,13 @@ def descobrir_categoria(arquivo):
 
     return "Outros" #se não encontrou, retorne outros   
 
+def criar_pasta_categoria(pasta, categoria):
+    caminho_categoria = os.path.join(pasta, categoria) #junta pasta com a categoria
+    #ex: C:/Users/ + "Imagens"
+    
+    if not os.path.exists(caminho_categoria):
+        os.mkdir(caminho_categoria) #cria a pasta
+        print(f"Pasta criada: {categoria}")
 
 def listar_arquivos(pasta):
     try:
