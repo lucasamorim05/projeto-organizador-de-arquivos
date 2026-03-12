@@ -36,7 +36,9 @@ def listar_arquivos(pasta):
 
             if os.path.isfile(caminho_completo):
                 categoria = descobrir_categoria(arquivo) 
+                criar_pasta_categoria(pasta,categoria)
                 print(f"{arquivo} → {categoria}") #se existir, descobre sua categoria e exibe ela
+                
 
     
     except FileNotFoundError: #se a pasta não foi encontrada
