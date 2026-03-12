@@ -43,14 +43,19 @@ def analisar_arquivos(pasta):
 
     return acoes
 
+def rganizar_arquivos(pasta,acoes):
 
 def main():
     print("== Organizador de arquivos v0.4 ==")
     pasta = input("Digite o caminho da pasta que deseja organizar: ")
     
     try:
-        analisar_arquivos(pasta)
+        acoes = analisar_arquivos(pasta)
         confirma = input("\nDeseja organizar esses arquivos? (s/n): ").lower()
+
+        if confirma == "s":
+            organizar_arquivos(pasta,acoes)
+
 
 if __name__ == "__main__":
     main()
