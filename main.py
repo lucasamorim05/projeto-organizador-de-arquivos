@@ -29,25 +29,20 @@ def criar_pasta_categoria(pasta, categoria):
         print(f"Pasta criada: {categoria}")
 
 def analisar_arquivos(pasta):
-    try:
-        arquivos = os.listdir(pasta) #acessa a pasta e pega seus arquivos
-        print("\narquivos encontrados!\n")
+    acoes = [] #guarda ações que o progama pode executar depois
+    arquivos = os.listdir(pasta) #acessa a pasta e pega seus arquivos
+    print("\narquivos encontrados!\n")
 
-        for arquivo in arquivos: #para cada arquivo encontrado
-            caminho_completo = os.path.join(pasta, arquivo) #junta pasta e arquivo e cria o caminho completo
+    for arquivo in arquivos: #para cada arquivo encontrado
+        caminho_completo = os.path.join(pasta, arquivo) #junta pasta e arquivo e cria o caminho completo
 
-            if os.path.isfile(caminho_completo):
-                categoria = descobrir_categoria(arquivo) 
-                criar_pasta_categoria(pasta,categoria)
-                print(f"{arquivo} → {categoria}") #se existir, descobre sua categoria e exibe ela
-                
+        if os.path.isfile(caminho_completo):
+            categoria = descobrir_categoria(arquivo) 
+            print(f"{arquivo} → {categoria}") #se existir, descobre sua categoria e exibe ela
+            acoes.append((arquivo,pasta)) #registrando na lista...
 
-    
-    except FileNotFoundError: #se a pasta não foi encontrada
-        print("A pasta não foi encontrada.")
+    return acoes
 
-    except PermissionError: #se não conseguiu acessa-la
-        print("Sem permissão para acessar essa pasta.")
 
 def main():
     print("== Organizador de arquivos v0.4 ==")
