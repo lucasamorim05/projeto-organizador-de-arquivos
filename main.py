@@ -50,6 +50,7 @@ def main():
     
     try:
         analisar_arquivos(pasta)
+        confirma = input("\nDeseja organizar esses arquivos? (s/n): ").lower()
 
 if __name__ == "__main__":
     main()
