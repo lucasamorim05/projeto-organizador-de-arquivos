@@ -28,7 +28,7 @@ def criar_pasta_categoria(pasta, categoria):
         os.mkdir(caminho_categoria) #cria a pasta
         print(f"Pasta criada: {categoria}")
 
-def listar_arquivos(pasta):
+def analisar_arquivos(pasta):
     try:
         arquivos = os.listdir(pasta) #acessa a pasta e pega seus arquivos
         print("\narquivos encontrados!\n")
@@ -52,7 +52,9 @@ def listar_arquivos(pasta):
 def main():
     print("== Organizador de arquivos v0.4 ==")
     pasta = input("Digite o caminho da pasta que deseja organizar: ")
-    listar_arquivos(pasta)
+    
+    try:
+        analisar_arquivos(pasta)
 
 if __name__ == "__main__":
     main()
