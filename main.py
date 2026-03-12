@@ -1,4 +1,6 @@
 import os
+import shutil 
+
 
 CATEGORIAS = { #cria dicionários conectando nossas categorias com as extensões
     "Imagens": [".jpg", ".jpeg", ".png", ".gif"],
@@ -48,7 +50,7 @@ def listar_arquivos(pasta):
         print("Sem permissão para acessar essa pasta.")
 
 def main():
-    print("== Organizador de arquivos v0.1 ==")
+    print("== Organizador de arquivos v0.4 ==")
     pasta = input("Digite o caminho da pasta que deseja organizar: ")
     listar_arquivos(pasta)
 
