@@ -39,7 +39,7 @@ def analisar_arquivos(pasta):
         if os.path.isfile(caminho_completo):
             categoria = descobrir_categoria(arquivo) 
             print(f"{arquivo} → {categoria}") #se existir, descobre sua categoria e exibe ela
-            acoes.append((arquivo,pasta)) #registrando na lista...
+            acoes.append((arquivo,categoria)) #registrando na lista...
 
     return acoes
 
@@ -68,6 +68,12 @@ def main():
             print("\nOrganização concluída!")
         else:
             print("\nOperação cancelada.")
+
+    except FileNotFoundError: #se a pasta não foi encontrada
+        print("A pasta não foi encontrada.")
+
+    except PermissionError: #se não conseguiu acessa-la
+        print("Sem permissão para acessar essa pasta.")
 
 if __name__ == "__main__":
     main()
