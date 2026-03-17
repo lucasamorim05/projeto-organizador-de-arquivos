@@ -52,11 +52,14 @@ def organizar_arquivos(pasta,acoes):
         shutil.move(origem,destino)
         print(f"{arquivo} movido para {categoria}")
 
+def registrar_log(arquivo,categoria):
+    with open("log_organizador.txt","a",encoding="utf-8") as log:
+        log.write(f"{arquivo} -> {categoria}\n")
 
 
-
+    
 def main():
-    print("== Organizador de arquivos v0.4 ==")
+    print("== Organizador de arquivos v0.5 ==")
     pasta = input("Digite o caminho da pasta que deseja organizar: ")
     
     try:
