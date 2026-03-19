@@ -60,7 +60,7 @@ def registrar_log(arquivo,categoria):
 
         data = datetime.now().strftime("%d/%m/%Y %H:%M") #puxa a data de hoje
 
-        log.write(f"{arquivo} -> {categoria}\n") #insere a data e oq mudou
+        log.write(f"[{data}] {arquivo} -> {categoria}\n") #insere a data e oq mudou
 
 
 
