@@ -1,5 +1,6 @@
 import os
 import shutil 
+from datetime import datetime
 
 
 CATEGORIAS = { #cria dicionários conectando nossas categorias com as extensões
@@ -55,8 +56,11 @@ def organizar_arquivos(pasta,acoes):
         registrar_log(arquivo, categoria)
 
 def registrar_log(arquivo,categoria):
-    with open("log_organizador.txt","a",encoding="utf-8") as log:
-        log.write(f"{arquivo} -> {categoria}\n")
+    with open("log_organizador.txt","a",encoding="utf-8") as log: #cria arquivo txt
+
+        data = datetime.now().strftime("%d/%m/%Y %H:%M") #puxa a data de hoje
+
+        log.write(f"{arquivo} -> {categoria}\n") #insere a data e oq mudou
 
 
 
