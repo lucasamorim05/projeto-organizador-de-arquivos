@@ -29,6 +29,19 @@ def criar_pasta_categoria(pasta, categoria):
         os.mkdir(caminho_categoria) #cria a pasta
         print(f"Pasta criada: {categoria}")
 
+def tratar_duplicado(destino): #verifica se tem arquivo repe
+    base, extensao = os.path.splitext(destino) #separa extensão do resto do texto
+    contador = 1
+
+    novo_destino = destino
+    while os.path.exists(novo_destino): #enquanto existir arquivo com esse nome
+        novo_destino = f"{base}({contador}){extensao}"
+        contador +=1
+
+    return novo_destino
+
+
+
 def analisar_arquivos(pasta):
     acoes = [] #guarda ações que o progama pode executar depois
     arquivos = os.listdir(pasta) #acessa a pasta e pega seus arquivos
@@ -50,10 +63,14 @@ def organizar_arquivos(pasta,acoes):
         origem = os.path.join(pasta,arquivo) #caminho antes de mover
         destino = os.path.join(pasta,categoria,arquivo) #caminho incluindo a nova pasta
 
-        shutil.move(origem,destino)
-        print(f"{arquivo} movido para {categoria}")
+        destino = tratar_duplicado(destino)
 
-        registrar_log(arquivo, categoria)
+        shutil.move(origem,destino)
+        
+        nome_final = os.path.basename(destino) #atualiza foto.jpg para foto(1).jpg
+        print(f"{nome_final} movido para {categoria}")
+
+        registrar_log(nome_final, categoria)
 
 def registrar_log(arquivo,categoria):
     with open("log_organizador.txt","a",encoding="utf-8") as log: #cria arquivo txt
@@ -65,7 +82,7 @@ def registrar_log(arquivo,categoria):
 
 
 def main():
-    print("== Organizador de arquivos v0.5 ==")
+    print("== Organizador de arquivos v0.6 ==")
     pasta = input("Digite o caminho da pasta que deseja organizar: ")
     
     try:
