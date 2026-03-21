@@ -14,5 +14,14 @@ janela.geometry("500x250")
 titulo = tk.Label(janela, text="Organizador de Arquivos", font=("Arial", 16))
 titulo.pack(pady=10)
 
+# Cria botão selecionar pasta
+btn_pasta = tk.Button(janela, text="Selecionar Pasta", command=selecionar_pasta)
+btn_pasta.pack(pady=5)
 
+# Cria caminho da pasta
+label_pasta = tk.Label(janela, text="Nenhuma pasta selecionada")
+label_pasta.pack(pady=5)
 
+# Cria botão organizar
+btn_organizar = tk.Button(janela, text="Organizar Arquivos", command=organizar)
+btn_organizar.pack(pady=10)
