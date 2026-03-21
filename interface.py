@@ -3,7 +3,12 @@ from tkinter import filedialog #abre janela para escolher pasta
 from main import executar_organizacao #função onde está a lógica do organizador
 
 def selecionar_pasta():
+    pasta = filedialog.askdirectory() #retorna o caminho da pasta
+    if pasta:
+        label_pasta.config(text=pasta) #Atualiza o texto na tela
+
 def organizar():
+    pasta = label_pasta.cget("text") #Organiza os arquivos da pasta escolhida
 
 #Cria janela
 janela = tk.Tk()
