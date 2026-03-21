@@ -92,7 +92,6 @@ def executar_organizacao(pasta):
     except PermissionError: #se não conseguiu acessa-la
         return "Sem permissão para acessar essa pasta."
 
-    
 
 
 def main():
