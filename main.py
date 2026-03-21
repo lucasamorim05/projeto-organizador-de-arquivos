@@ -85,7 +85,6 @@ def executar_organizacao(pasta):
         acoes = analisar_arquivos(pasta)
         organizar_arquivos(pasta,acoes)
         return "Organização concluída com sucesso!"
-
     except FileNotFoundError: #se a pasta não foi encontrada
         return "A pasta não foi encontrada."
 
