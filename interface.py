@@ -8,7 +8,20 @@ def selecionar_pasta():
         label_pasta.config(text=pasta) #Atualiza o texto na tela
 
 def organizar():
-    pasta = label_pasta.cget("text") #Organiza os arquivos da pasta escolhida
+    pasta = label_pasta.cget("text") #pega o caminho da pasta
+
+    #Verifica se o usuário selecionou algo
+    if pasta == "Nenhuma pasta selecionada": 
+        label_status.config(text="Selecione uma pasta primeiro!")
+        return
+
+    #Mostra "Organizando.."
+    label_status.config(text="Organizando...")
+    janela.update()
+
+
+    resultado = executar_organizacao(pasta) #chama main.py
+    label_status.config(text=resultado) #mostra resultado
 
 #Cria janela
 janela = tk.Tk()
