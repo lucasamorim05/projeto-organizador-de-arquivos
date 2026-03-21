@@ -79,6 +79,20 @@ def registrar_log(arquivo,categoria):
 
         log.write(f"[{data}] {arquivo} -> {categoria}\n") #insere a data e oq mudou
 
+#função main compactada para interface
+def executar_organizacao(pasta):
+    try:
+        acoes = analisar_arquivos(pasta)
+        organizar_arquivos(pasta,acoes)
+        return "Organização concluída com sucesso!"
+
+     except FileNotFoundError: #se a pasta não foi encontrada
+        return "A pasta não foi encontrada."
+
+    except PermissionError: #se não conseguiu acessa-la
+        return "Sem permissão para acessar essa pasta."
+
+    
 
 
 def main():
