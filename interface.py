@@ -25,3 +25,10 @@ label_pasta.pack(pady=5)
 # Cria botão organizar
 btn_organizar = tk.Button(janela, text="Organizar Arquivos", command=organizar)
 btn_organizar.pack(pady=10)
+
+# Cria status 
+label_status = tk.Label(janela, text="")
+label_status.pack(pady=10)
+
+#Executar interface
+janela.mainloop()
