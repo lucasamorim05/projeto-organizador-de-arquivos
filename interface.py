@@ -27,6 +27,27 @@ def organizar():
     resultado = executar_organizacao(pasta) #chama main.py
     label_status.config(text=resultado) #mostra resultado
 
+def iniciar_auto():
+    global monitorando
+    pasta = label_pasta.cget("text")
+
+    if pasta == "Nenhuma pasta selecionada":    #verifica se o usuário selecionou pasta
+        label_status.config(text="Selecione uma pasta primeiro!")
+        return
+
+    if not monitorando:     #Verifica se já está monitorando
+        monitorando = True
+        label_status.config(text="Monitoramento ativo...")  #Atualiza a interface
+
+        thread = threading.Thread(      #Cria uma thread
+            target=iniciar_monitoramento,
+            args=(pasta,),
+            daemon=True
+        )
+        thread.start()
+
+
+
 #Cria janela
 janela = tk.Tk()
 janela.title("Organizador de Arquivos")
@@ -47,6 +68,10 @@ label_pasta.pack(pady=5)
 # Cria botão organizar
 btn_organizar = tk.Button(janela, text="Organizar Arquivos", command=organizar)
 btn_organizar.pack(pady=10)
+
+#Cria botão Organizar auto
+btn_auto = tk.Button(janela, text="Ativar Organização Automática", command=iniciar_auto)
+btn_auto.pack(pady=5)
 
 # Cria status 
 label_status = tk.Label(janela, text="")
