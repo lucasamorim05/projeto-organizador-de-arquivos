@@ -1,6 +1,10 @@
 import tkinter as tk #biblioteca para criar janelas (interfaces gráficas)
 from tkinter import filedialog #abre janela para escolher pasta
 from main import executar_organizacao #função onde está a lógica do organizador
+import threading   #roda mais de um código ao mesmo tempo
+from monitor import iniciar_monitoramento
+
+monitorando = False  #variável para saber se o monitor está rodando
 
 def selecionar_pasta():
     pasta = filedialog.askdirectory() #retorna o caminho da pasta
