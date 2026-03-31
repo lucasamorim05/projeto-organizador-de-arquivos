@@ -17,3 +17,19 @@ class MonitorHandler(FileSystemEventHandler):           #classe que reage a even
             print(f"Novo arquivo detectado: {event.src_path}")
             executar_organizacao(self.pasta)
 
+def iniciar_monitoramento(pasta):                        #inicia todo o sistema de monitoramento
+    event_handler = MonitorHandler(pasta)                #Define o que fazer quando algo acontecer
+    observer = Observer()                                #vigia a pasta
+    
+    observer.schedule(event_handler, path=pasta, recursive=False)
+    observer.start()  #começa a observar a pasta em tempo real
+
+    print(f"Monitorando pasta: {pasta}")
+
+    try:
+        while True:                                       #Mantém o programa rodando
+            time.sleep(2)
+    except KeyboardInterrupt:                             #Se apertar Ctrl + C, o programa para
+        observer.stop()
+    
+    observer.join()
